@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "400361248987",
+    "project_id": "inventorytis",
+    "storage_bucket": "inventorytis.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400361248987:android:fb4dc7f8851703aa5614fe",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIJvE-nqDzEO_4lo2LAvf7MdNJ4lu7_Rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
