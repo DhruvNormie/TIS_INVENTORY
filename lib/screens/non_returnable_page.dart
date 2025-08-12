@@ -101,7 +101,7 @@ class _NonReturnablePageState extends State<NonReturnablePage> {
                       // Student Name
                       _buildInputCard(
                         controller: _studentController,
-                        label: 'Enter student name',
+                        label: 'Enter Remark',
                         icon: Icons.person_outline,
                         iconColor: iconColor,
                         accentColor: accentColor,

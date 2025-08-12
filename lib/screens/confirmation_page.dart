@@ -24,31 +24,47 @@ class ConfirmationPage extends StatefulWidget {
 class _ConfirmationPageState extends State<ConfirmationPage> {
   bool _processing = false;
   String? _error;
+Future<void> _confirm() async {
+  setState(() {
+    _processing = true;
+    _error = null;
+  });
 
-  Future<void> _confirm() async {
-    setState(() {
-      _processing = true;
-      _error = null;
-    });
-    try {
-      await TransactionService().createTransaction(
-        isReturnable: widget.isReturnable,
-        remark: widget.remark,
-        reason: widget.reason,
-        items: widget.items,
-      );
-      Navigator.popUntil(context, (route) => route.isFirst);
-    } catch (e) {
-      setState(() => _error = e.toString());
-    } finally {
-      if (mounted) setState(() => _processing = false);
-      // show snackbar or dialog if needed
+  try {
+    await TransactionService().createTransactionPending(
+      isReturnable: widget.isReturnable,
+      remark: widget.remark,
+      reason: widget.reason,
+      items: widget.items,
+    );
 
+    if (!mounted) return;
 
-
-    }
+    // Show success message that it's waiting for manager approval
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Request Submitted'),
+        content: const Text(
+          'Your request has been sent to your manager for approval. You will be notified once it is reviewed.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // close dialog
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  } catch (e) {
+    setState(() => _error = e.toString());
+  } finally {
+    if (mounted) setState(() => _processing = false);
   }
-
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(

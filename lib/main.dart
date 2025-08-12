@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:tis_inventory/screens/ManagerHome.dart';
 import 'package:tis_inventory/screens/admin_home.dart';
 import 'package:tis_inventory/services/migrations.dart';
 import 'services/auth_service.dart';
 import 'widgets/auth_gate.dart';
 import 'firebase_options.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
